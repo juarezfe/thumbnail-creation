@@ -1,6 +1,6 @@
 <!--
 title: 'AWS Python Example: Thumbnail Creation'
-description: 'This template demonstrates how to deploy a Python function running on AWS Lambda using the traditional Serverless Framework.'
+description: 'This template demonstrates how to deploy a Python project running on AWS Lambda using the traditional Serverless Framework.'
 layout: Doc
 framework: v3
 platform: AWS
@@ -14,7 +14,17 @@ authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
 
 # Serverless Framework AWS Python Example: Thumbnail Creation
 
-This template demonstrates how to deploy a Python function running on AWS Lambda using the traditional Serverless Framework. The deployed function does not include any event definitions as well as any kind of persistence (database). For more advanced configurations check out the [examples repo](https://github.com/serverless/examples/) which includes integrations with SQS, DynamoDB or examples of functions that are triggered in `cron`-like manner. For details about configuration of specific `events`, please refer to our [documentation](https://www.serverless.com/framework/docs/providers/aws/events/).
+This template demonstrates how to deploy a Python project running on AWS Lambda using the traditional Serverless Framework.
+The project consist on:
+
+1. Configure the s3 bucket and permissions required to upload images and create a thumbnail generation function that will create a thumbnail image automatically from the image uploaded in S3 and then save it to a database (dynamoDB).
+
+2. Create REST API (API GATEWAY) Methods:
+  - s3_get_thumbnail_urls
+  - s3_get_item
+  - s3_delete_item
+  
+3. 
 
 ## Usage
 
@@ -23,7 +33,7 @@ This template demonstrates how to deploy a Python function running on AWS Lambda
 In order to deploy the example, you need to run the following command:
 
 ```
-$ serverless deploy
+$ sls deploy
 ```
 
 After running deploy, you should see output similar to:
@@ -37,39 +47,7 @@ functions:
   s3_thumbnail_generator: aws-python-project-dev-s3_thumbnail_generator (1.5 kB)
 ```
 
-### Invocation
-
-After successful deployment, you can invoke the deployed function by using the following command:
-
-```bash
-serverless invoke --function s3_thumbnail_generator
-```
-
-Which should result in response similar to the following:
-
-```json
-{
-    "statusCode": 200,
-    "body": "{\"message\": \"Go Serverless v3.0! Your function executed successfully!\", \"input\": {}}"
-}
-```
-
 ### Local development
-
-You can invoke your function locally by using the following command:
-
-```bash
-serverless invoke local --function s3_thumbnail_generator
-```
-
-Which should result in response similar to the following:
-
-```
-{
-    "statusCode": 200,
-    "body": "{\"message\": \"Go Serverless v3.0! Your function executed successfully!\", \"input\": {}}"
-}
-```
 
 ### Bundling dependencies
 
