@@ -15,7 +15,7 @@ authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
 # Serverless Framework AWS Python Example: Thumbnail Creation
 
 This template demonstrates how to deploy a Python project running on AWS Lambda using the traditional Serverless Framework.
-The project consist on:
+The project consists on:
 
 1. Configure the s3 bucket and permissions required to upload images and create a thumbnail generation function that will create a thumbnail image automatically from the image uploaded in S3 and then save it to a database (dynamoDB).
 
